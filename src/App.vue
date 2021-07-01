@@ -18,6 +18,11 @@
 $text-blue: #302ea7;
 $bg-light: #f7f7fb;
 
+  html,
+  body {
+    height: 100%;
+  }
+
   body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 300;
@@ -30,6 +35,7 @@ $bg-light: #f7f7fb;
   }
 
   #app {
+    height: 100%;
     position: relative;
     z-index: 10;
 
