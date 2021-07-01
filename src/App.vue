@@ -1,32 +1,72 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <header class="header">
+      <div class="container">
+        <div class="logo">Running Calendar</div>
+        <div id="nav">
+          <router-link to="/">Home</router-link>
+          <router-link to="/about">About</router-link>
+        </div>
+        <div class="social">Like</div>
+      </div>
+    </header>
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+$text-blue: #302ea7;
+$bg-light: #f7f7fb;
 
-#nav {
-  padding: 30px;
+  body {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+  }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: $text-blue;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  #app {
+    position: relative;
+    z-index: 10;
+
+    &:after {
+      content: '';
+      width: 30rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: $bg-light;
+      z-index: -1;
     }
   }
-}
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 3rem 0;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  #nav {
+    a {
+      padding: 0 1rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 </style>
