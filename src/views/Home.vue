@@ -3,70 +3,7 @@
     <div class="container">
       <Schedule/>
       <div class="results">
-        <p>
-          <span>{{ this.$store.state.day1.time }}</span>
-          <span>{{ this.$store.state.day1.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day2.time }}</span>
-          <span>{{ this.$store.state.day2.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day3.time }}</span>
-          <span>{{ this.$store.state.day3.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day4.time }}</span>
-          <span>{{ this.$store.state.day4.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day5.time }}</span>
-          <span>{{ this.$store.state.day5.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day6.time }}</span>
-          <span>{{ this.$store.state.day6.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day7.time }}</span>
-          <span>{{ this.$store.state.day7.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day8.time }}</span>
-          <span>{{ this.$store.state.day8.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day9.time }}</span>
-          <span>{{ this.$store.state.day9.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day10.time }}</span>
-          <span>{{ this.$store.state.day10.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day11.time }}</span>
-          <span>{{ this.$store.state.day11.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day12.time }}</span>
-          <span>{{ this.$store.state.day12.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day13.time }}</span>
-          <span>{{ this.$store.state.day13.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day14.time }}</span>
-          <span>{{ this.$store.state.day14.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day15.time }}</span>
-          <span>{{ this.$store.state.day15.distance }}</span>
-        </p>
-        <p>
-          <span>{{ this.$store.state.day16.time }}</span>
-          <span>{{ this.$store.state.day16.distance }}</span>
-        </p>
+        <Results/>
       </div>
     </div>
   </div>
@@ -74,13 +11,35 @@
 
 <script>
 import Schedule from '@/components/Schedule'
+import Results from '@/components/Results'
 
 export default {
   name: 'Home',
   components: {
-    Schedule
+    Schedule,
+    Results
   }
 }
 </script>
+
+<style lang="scss">
+$text-blue: #302ea7;
+
+.home {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+} 
+  .results {
+    min-height: calc(100vh - 10rem);
+    width: 30rem;
+    padding: 3rem;
+    border-radius: 3rem 3rem 0 0;
+    background: $text-blue;
+    color: #fff;
+  }
+</style>
 
 

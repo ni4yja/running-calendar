@@ -41,22 +41,23 @@ export default {
   },
   methods: {
     dateSelected(e) {
-      this.$nextTick(() => this.$store.state.day1.time = dayjs(this.model.date).format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day2.time = dayjs(this.$store.state.day1.time).add(2,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day3.time = dayjs(this.$store.state.day2.time).add(4,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day4.time = dayjs(this.$store.state.day3.time).add(5,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day5.time = dayjs(this.$store.state.day4.time).add(7,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day6.time = dayjs(this.$store.state.day5.time).add(9,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day7.time = dayjs(this.$store.state.day6.time).add(11,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day8.time = dayjs(this.$store.state.day7.time).add(12,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day9.time = dayjs(this.$store.state.day8.time).add(14,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day10.time = dayjs(this.$store.state.day9.time).add(16,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day11.time = dayjs(this.$store.state.day10.time).add(18,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day12.time = dayjs(this.$store.state.day11.time).add(19,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day13.time = dayjs(this.$store.state.day12.time).add(21,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day14.time = dayjs(this.$store.state.day13.time).add(23,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day15.time = dayjs(this.$store.state.day14.time).add(25,'day').format("ddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day16.time = dayjs(this.$store.state.day15.time).add(26,'day').format("ddd, DD MMMM"))
+      this.$store.state.dateSelected = true
+      this.$nextTick(() => this.$store.state.day1.time = dayjs(this.model.date).format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day2.time = dayjs(this.model.date).add(2,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day3.time = dayjs(this.model.date).add(4,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day4.time = dayjs(this.model.date).add(5,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day5.time = dayjs(this.model.date).add(7,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day6.time = dayjs(this.model.date).add(9,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day7.time = dayjs(this.model.date).add(11,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day8.time = dayjs(this.model.date).add(12,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day9.time = dayjs(this.model.date).add(14,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day10.time = dayjs(this.model.date).add(16,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day11.time = dayjs(this.model.date).add(18,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day12.time = dayjs(this.model.date).add(19,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day13.time = dayjs(this.model.date).add(21,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day14.time = dayjs(this.model.date).add(23,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day15.time = dayjs(this.model.date).add(25,'day').format("dddd, DD MMMM")),
+      this.$nextTick(() => this.$store.state.day16.time = dayjs(this.model.date).add(26,'day').format("dddd, DD MMMM"))
       this.$store.state.day1.distance = this.$store.state.program[0]
       this.$store.state.day2.distance = this.$store.state.program[1]
       this.$store.state.day3.distance = this.$store.state.program[2]
@@ -84,8 +85,6 @@ export default {
   $bg-gray: #f6f6f9;
 
   .schedule {
-    margin-top: 5rem;
-
     .vdp-datepicker__calendar {
       margin-top: 3rem;
       border: none;
@@ -105,11 +104,14 @@ export default {
       }
 
       .cell {
-        width: 42px;
         height: 42px;
         line-height: 42px;
         border: none;
         margin-bottom: .5rem;
+
+        &.day {
+          width: 42px;
+        }
       }
 
       .cell:not(.blank):not(.disabled).day:hover, 
@@ -128,7 +130,7 @@ export default {
         border-radius: 50%;
       }
 
-      .cell.selected {
+      .cell.day.selected {
         background: $text-blue;
         color: #fff;
         border-radius: 50%;
@@ -136,6 +138,13 @@ export default {
         &:hover {
           background: $text-blue;
         }
+      }
+
+      .cell.month.selected,
+      .cell.year.selected {
+        background: $text-blue;
+        color: #fff;
+        border-radius: none;
       }
     }
 

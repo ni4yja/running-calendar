@@ -18,11 +18,6 @@
 $text-blue: #302ea7;
 $bg-light: #f7f7fb;
 
-  html,
-  body {
-    height: 100%;
-  }
-
   body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 300;
@@ -35,7 +30,8 @@ $bg-light: #f7f7fb;
   }
 
   #app {
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     position: relative;
     z-index: 10;
 
@@ -57,9 +53,13 @@ $bg-light: #f7f7fb;
   }
 
   .header {
-    padding: 3rem 0;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     .container {
+      width: 100%;
       display: flex;
       justify-content: space-between;
     }

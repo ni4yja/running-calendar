@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    dateSelected: false,
     program: [
       '2 km', '2 km', '3 km', '25 minutes',
       '2 km', '3 km', '3 km', '30 minutes',
