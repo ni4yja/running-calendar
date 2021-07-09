@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <Schedule/>
+      <Calendar/>
       <div class="results">
         <Results/>
       </div>
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import Schedule from '@/components/Schedule'
+import Calendar from '@/components/Calendar'
 import Results from '@/components/Results'
 
 export default {
   name: 'Home',
   components: {
-    Schedule,
+    Calendar,
     Results
   }
 }
