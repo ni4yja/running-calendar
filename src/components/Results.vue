@@ -138,7 +138,6 @@ export default {
     transition-property: opacity, transform;
     transition-timing-function: cubic-bezier(.6,.15,.35,.8);
   }
-  
 }
 
 $delay: 100ms;
