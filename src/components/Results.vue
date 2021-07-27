@@ -1,5 +1,6 @@
 <template>
   <div class="results-list">
+    <WeatherWidget></WeatherWidget>
     <h2 class="results-list--title">Don't wait until a perfect Monday, start running today! Pick a date, to get your training plan ⬇️</h2>
     <div v-if="this.$store.state.dateSelected" class="results-tabs">
       <TabNav :tabs="['Week 1', 'Week 2', 'Week 3', 'Week 4']" :selected="selected" @selected="setSelected" >
@@ -109,11 +110,13 @@
 </template>
 
 <script>
+import WeatherWidget from '@/components/WeatherWidget'
 import TabNav from '@/components/TabNav'
 import Tab from '@/components/Tab'
 
 export default {
-  components: { 
+  components: {
+    WeatherWidget, 
     TabNav, 
     Tab 
   },
