@@ -204,6 +204,7 @@ $text-yellow: #ffcf25;
 
     &-item {
       padding: 0 1rem;
+      cursor: pointer;
     }
 
     &-link {
