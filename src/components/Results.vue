@@ -2,108 +2,24 @@
   <div class="results-list">
     <WeatherWidget></WeatherWidget>
     <h2 class="results-list--title">Don't wait until a perfect Monday, start running today! Pick a date, to get your training plan ⬇️</h2>
-    <div v-if="this.$store.state.dateSelected" class="results-tabs">
-      <TabNav :tabs="['Week 1', 'Week 2', 'Week 3', 'Week 4']" :selected="selected" @selected="setSelected" >
-      <transition
-        name="fade"
-        mode="out-in"
-        appear
-        :duration="500"
-      >
-        <Tab :isSelected="selected === 'Week 1'" >
-          <p>
-              <span>{{ this.$store.state.day1.time }}</span>
-              <span>{{ this.$store.state.day1.distance }}</span>
+    <div v-if="dateSelected" class="results-tabs">
+      <TabNav :tabs="weeks" :selected="selected" @selected="setSelected" >
+        <template v-for="(week, indexWeek) in weeks" class="asd">
+          <transition
+            name="fade"
+            mode="out-in"
+            appear
+            :duration="500"
+            :key="indexWeek"
+          >
+          <Tab :isSelected="selected === week">
+            <p v-for="(day, index) in program[selected]" :key="index">
+              <span>{{ day.time }}</span>
+              <span>{{ day.distance }}</span>
             </p>
-            <p>
-              <span>{{ this.$store.state.day2.time }}</span>
-              <span>{{ this.$store.state.day2.distance }}</span>
-            </p>
-            <p>
-              <span>{{ this.$store.state.day3.time }}</span>
-              <span>{{ this.$store.state.day3.distance }}</span>
-            </p>
-            <p>
-              <span>{{ this.$store.state.day4.time }}</span>
-              <span>{{ this.$store.state.day4.distance }}</span>
-            </p>
-        </Tab>
-      </transition>
-      <transition
-        name="fade"
-        mode="out-in"
-        appear
-        :duration="500"
-      >
-        <Tab :isSelected="selected === 'Week 2'" >
-          <p>
-            <span>{{ this.$store.state.day5.time }}</span>
-            <span>{{ this.$store.state.day5.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day6.time }}</span>
-            <span>{{ this.$store.state.day6.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day7.time }}</span>
-            <span>{{ this.$store.state.day7.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day8.time }}</span>
-            <span>{{ this.$store.state.day8.distance }}</span>
-          </p>
-        </Tab>
-      </transition>
-      <transition
-        name="fade"
-        mode="out-in"
-        appear
-        :duration="500"
-      >
-        <Tab :isSelected="selected === 'Week 3'" >
-          <p>
-            <span>{{ this.$store.state.day9.time }}</span>
-            <span>{{ this.$store.state.day9.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day10.time }}</span>
-            <span>{{ this.$store.state.day10.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day11.time }}</span>
-            <span>{{ this.$store.state.day11.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day12.time }}</span>
-            <span>{{ this.$store.state.day12.distance }}</span>
-          </p>
-        </Tab>
-      </transition>
-      <transition
-        name="fade"
-        mode="out-in"
-        appear
-        :duration="500"
-      >
-        <Tab :isSelected="selected === 'Week 4'" >
-          <p>
-            <span>{{ this.$store.state.day13.time }}</span>
-            <span>{{ this.$store.state.day13.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day14.time }}</span>
-            <span>{{ this.$store.state.day14.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day15.time }}</span>
-            <span>{{ this.$store.state.day15.distance }}</span>
-          </p>
-          <p>
-            <span>{{ this.$store.state.day16.time }}</span>
-            <span>{{ this.$store.state.day16.distance }}</span>
-          </p>
-        </Tab>
-      </transition>
+          </Tab>
+          </transition>
+        </template>
     </TabNav>
     </div>
   </div>
@@ -113,6 +29,7 @@
 import WeatherWidget from '@/components/WeatherWidget'
 import TabNav from '@/components/TabNav'
 import Tab from '@/components/Tab'
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -122,12 +39,26 @@ export default {
   },
   data() {
     return {
-      selected: 'Week 1'
+      selected: ''
     }
   },
   methods: {
     setSelected(tab) {
       this.selected = tab;
+    }
+  },
+  computed: {
+    ...mapGetters(['program', 'dateSelected']),
+    weeks () {
+      return Object.keys(this.program)
+    }
+  },
+  watch: {
+    program: {
+      deep: true,
+      handler (newProgram, oldProgram) {
+        this.selected = this.weeks[0];
+      }
     }
   }
 }
