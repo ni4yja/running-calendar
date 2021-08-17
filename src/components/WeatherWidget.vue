@@ -1,6 +1,6 @@
 <template>
-  <div class="widget" v-if="typeof weather.name != 'undefined'">
-    <h2 class="date">{{ dateBuilder() }}</h2>
+  <div class="widget" v-if="weather.name">
+    <h2 class="date">{{ dateBuilder }}</h2>
     <p class="location">{{ weather.name }}, {{ weather.sys.country }}</p>
     <div class="weather-box">
       <i class="wi wi-day-sunny" v-if="getCurrent === weatherStatuses.Clear"></i>
@@ -15,22 +15,14 @@
 
 <script>
 import dayjs from 'dayjs';
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
-  data() {
-    return {
-      api_key: process.env.VUE_APP_API_KEY,
-      url_base: process.env.VUE_APP_API_URL,
-      weather: {}
-    }
-  },
   created() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
-          fetch(`${this.url_base}weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&APPID=${this.api_key}`)
-            .then(res => {
-              return res.json();
-            }).then(this.setResults);
+          this.getWeather(position);
         }
       );
     }
@@ -39,6 +31,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['weather']),
     getCurrent() {
       let detail = this.weather.weather[0].main;
       return detail;
@@ -53,15 +46,12 @@ export default {
 
       return status;
     },
+    dateBuilder () {
+      return dayjs().format("dddd, DD MMMM");
+    }
   },
   methods: {
-    setResults (results) {
-      this.weather = results
-    },
-    dateBuilder () {
-      let date = dayjs().format("dddd, DD MMMM")
-      return date
-    }
+    ...mapActions(['getWeather'])
   }
 }
 </script>

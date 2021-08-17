@@ -3,7 +3,7 @@
     <h1>Run your first 5 km in 4 weeks</h1>
     <datepicker
       v-model="model.date"
-      @selected="dateSelected()"
+      @selected="dateSelected"
       :inline="true"
       :format="DatePickerFormat"
       :full-month-name="true"
@@ -16,7 +16,6 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker'; 
-import dayjs from 'dayjs';
 
 export default {
   name: 'Schedule',
@@ -40,40 +39,9 @@ export default {
     }
   },
   methods: {
-    dateSelected(e) {
-      this.$store.state.dateSelected = true
-      this.$nextTick(() => this.$store.state.day1.time = dayjs(this.model.date).format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day2.time = dayjs(this.model.date).add(2,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day3.time = dayjs(this.model.date).add(4,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day4.time = dayjs(this.model.date).add(5,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day5.time = dayjs(this.model.date).add(7,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day6.time = dayjs(this.model.date).add(9,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day7.time = dayjs(this.model.date).add(11,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day8.time = dayjs(this.model.date).add(12,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day9.time = dayjs(this.model.date).add(14,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day10.time = dayjs(this.model.date).add(16,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day11.time = dayjs(this.model.date).add(18,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day12.time = dayjs(this.model.date).add(19,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day13.time = dayjs(this.model.date).add(21,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day14.time = dayjs(this.model.date).add(23,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day15.time = dayjs(this.model.date).add(25,'day').format("dddd, DD MMMM")),
-      this.$nextTick(() => this.$store.state.day16.time = dayjs(this.model.date).add(26,'day').format("dddd, DD MMMM"))
-      this.$store.state.day1.distance = this.$store.state.program[0]
-      this.$store.state.day2.distance = this.$store.state.program[1]
-      this.$store.state.day3.distance = this.$store.state.program[2]
-      this.$store.state.day4.distance = this.$store.state.program[3]
-      this.$store.state.day5.distance = this.$store.state.program[4]
-      this.$store.state.day6.distance = this.$store.state.program[5]
-      this.$store.state.day7.distance = this.$store.state.program[6]
-      this.$store.state.day8.distance = this.$store.state.program[7]
-      this.$store.state.day9.distance = this.$store.state.program[8]
-      this.$store.state.day10.distance = this.$store.state.program[9]
-      this.$store.state.day11.distance = this.$store.state.program[10]
-      this.$store.state.day12.distance = this.$store.state.program[11]
-      this.$store.state.day13.distance = this.$store.state.program[12]
-      this.$store.state.day14.distance = this.$store.state.program[13]
-      this.$store.state.day15.distance = this.$store.state.program[14]
-      this.$store.state.day16.distance = this.$store.state.program[15]
+    dateSelected(date) {
+      this.$store.commit('SET_SELECTED_DATE', true)
+      this.$store.commit('SET_PROGRAM_TIME', date)
     }
   }
 }
