@@ -2,12 +2,17 @@
   <div id="app">
     <header class="header">
       <div class="container">
-        <div class="logo">Running Calendar</div>
+        <div class="logo">
+          <router-link to="/">Running Planner</router-link>
+        </div>
         <div id="nav">
           <router-link to="/">Home</router-link>
           <router-link to="/about">About</router-link>
         </div>
-        <div class="social">Like</div>
+        <div class="social">
+          <a href="">GitHub</a>
+          <a href="">Medium</a>
+        </div>
       </div>
     </header>
     <router-view/>
@@ -65,7 +70,9 @@ $bg-light: #f7f7fb;
     }
   }
 
-  #nav {
+  .logo,
+  #nav,
+  .social {
     a {
       padding: 0 1rem;
       text-decoration: none;

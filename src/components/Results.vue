@@ -3,8 +3,8 @@
     <WeatherWidget></WeatherWidget>
     <h2 class="results-list--title">Don't wait until a perfect Monday, start running today! Pick a date, to get your training plan ⬇️</h2>
     <div v-if="dateSelected" class="results-tabs">
-      <TabNav :tabs="weeks" :selected="selected" @selected="setSelected" >
-        <template v-for="(week, indexWeek) in weeks" class="asd">
+      <TabNav :tabs="weeks" :selected="selected" @selected="setSelected">
+        <template v-for="(week, indexWeek) in weeks">
           <transition
             name="fade"
             mode="out-in"

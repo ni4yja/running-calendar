@@ -10,7 +10,7 @@ export default new Vuex.Store({
     weather: {},
     dateSelected: false,
     program: {
-      'week 1': [
+      'Week 1': [
         {
           distance: "2 km",
           time: ""
@@ -28,7 +28,7 @@ export default new Vuex.Store({
           time: "",
         },
       ],
-      week_2: [
+      'Week 2': [
         {
           distance: "2 km",
           time: ""
@@ -46,7 +46,7 @@ export default new Vuex.Store({
           time: "",
         },
       ],
-      week_3: [
+      'Week 3': [
         {
           distance: "3 km",
           time: ""
@@ -64,7 +64,7 @@ export default new Vuex.Store({
           time: "",
         },
       ],
-      week_4: [
+      'Week 4': [
         {
           distance: "3 km",
           time: ""
