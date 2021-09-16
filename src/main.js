@@ -3,9 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'normalize.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import * as TastyBurgerButton from 'vue-tasty-burgers'
+
 
 Vue.config.productionTip = false
+Vue.use(TastyBurgerButton);
 
 new Vue({
   router,

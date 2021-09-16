@@ -2,30 +2,31 @@
   <div id="app">
     <header class="header">
       <div class="container">
-        <div class="logo">
-          <router-link to="/">Running Planner</router-link>
-        </div>
-        <div id="nav">
-          <router-link to="/">Home</router-link>
-          <router-link to="/about">About</router-link>
-        </div>
-        <div class="social">
-          <a href="">GitHub</a>
-          <a href="">Medium</a>
-        </div>
+        <Menu/>  
       </div>
     </header>
     <router-view/>
   </div>
 </template>
 
+<script>
+import Menu from '@/components/Menu'
+
+export default {
+  name: "app",
+  components: {
+    Menu
+  }
+}
+</script>
+
+
 <style lang="scss">
 $text-blue: #302ea7;
-$bg-light: #f7f7fb;
 
   body {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
   }
 
   h1 {
@@ -34,52 +35,14 @@ $bg-light: #f7f7fb;
     color: $text-blue;
   }
 
-  #app {
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    z-index: 10;
-
-    &:after {
-      content: '';
-      width: 30rem;
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background: $bg-light;
-      z-index: -1;
-    }
-  }
-
-  .container {
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-
   .header {
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border: 1px solid rgba(210, 210, 215, 0.2);
+  }
 
+  @media (min-width: 800px) {
     .container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
+      max-width: 796px;
+      margin: 0 auto;
     }
-  }
-
-  .logo,
-  #nav,
-  .social {
-    a {
-      padding: 0 1rem;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+}
 </style>

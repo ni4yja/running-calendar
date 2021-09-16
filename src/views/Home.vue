@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
+  <main class="home">
     <div class="container">
       <Calendar/>
       <div class="results">
         <Results/>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -28,13 +28,13 @@ $text-blue: #302ea7;
 .home {
   .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    //justify-content: space-between;
     margin-top: 4rem;
+    padding: 0 15px;
   }
 } 
   .results {
-    min-height: calc(100vh - 10rem);
-    width: 30rem;
     padding: 3rem;
     border-radius: 3rem 3rem 0 0;
     background: $text-blue;
