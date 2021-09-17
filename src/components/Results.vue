@@ -23,12 +23,10 @@
             :key="indexWeek"
           >
             <Tab :isSelected="selected === week">
-              <p
-                v-for="(day, index) in program[selected]"
-                :key="index"
-              >
+              <p v-for="(day, index) in program[selected]" :key="index" @click="toggleComplete">
                 <span>{{ day.time }}</span>
                 <span>{{ day.distance }}</span>
+                <span class="mark"></span>
               </p>
             </Tab>
           </transition>
@@ -53,12 +51,14 @@ export default {
   data() {
     return {
       selected: "",
-      isCompleted: false,
     };
   },
   methods: {
     setSelected(tab) {
       this.selected = tab;
+    },
+    toggleComplete(event) {
+      event.currentTarget.classList.toggle("completed");
     },
   },
   computed: {
@@ -151,6 +151,7 @@ $blue-light: #5d5f8f;
     font-weight: 700;
     text-align: center;
     font-size: 20px;
+    margin: 0 0 17px;
   }
 
   .nav {
@@ -190,11 +191,31 @@ $blue-light: #5d5f8f;
     border-radius: 0px 0px 8px 8px;
 
     p {
+      display: block;
+      position: relative;
       margin: 0;
       padding: 4px 8px;
       border-radius: 4px;
       background: #fff;
       margin-bottom: 16px;
+
+      &.completed {
+        .mark {
+          background-image: url("../assets/done-green.svg");
+        }
+      }
+
+      .mark {
+        cursor: pointer;
+        position: absolute;
+        right: 11px;
+        bottom: 11px;
+        width: 15px;
+        height: 15px;
+        background-repeat: no-repeat;
+        background-size: 15px;
+        background-image: url("../assets/done.svg");
+      }
 
       &:last-child {
         margin-bottom: 0;
