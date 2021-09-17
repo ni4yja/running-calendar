@@ -114,6 +114,10 @@ export default {
     this.checkWindow();
     window.addEventListener("resize", this.checkWindow);
   },
+  mounted() {
+    const button = this.$refs.button.querySelector(".hamburger");
+    button.setAttribute("aria-label", "toggle-menu-button");
+  },
   destroyed() {
     // Should remove listener
     window.removeEventListener("resize", this.checkWindow);

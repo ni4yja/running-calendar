@@ -23,23 +23,40 @@ export default {
 </script>
 
 <style lang="scss">
-$text-blue: #302ea7;
+$text-blue: #343AA8;
+$text-light: #EBEFF2;
 
 .home {
   .container {
     display: flex;
     flex-direction: column;
-    //justify-content: space-between;
     margin-top: 4rem;
     padding: 0 15px;
   }
-} 
-  .results {
-    padding: 3rem;
-    border-radius: 3rem 3rem 0 0;
-    background: $text-blue;
-    color: #fff;
+}
+
+.results {
+  box-sizing: border-box;
+  margin-bottom: 3rem;
+  padding: 24px;
+  border-radius: 16px;
+  background: $text-blue;
+  color: $text-light;
+}
+
+@media (min-width: 800px) {
+  .home {
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
+
+  .results {
+    width: 386px;
+    margin-bottom: 0;
+  }
+}
 </style>
 
 

@@ -104,7 +104,7 @@ export default new Vuex.Store({
 
           if (currentDay > 0 && index !== lastIndex) currentDay++;
           
-          day.time = dayjs(date).add(currentDay, 'day').format("dddd, DD MMMM");
+          day.time = dayjs(date).add(currentDay, 'day').format("ddd, DD MMMM");
           currentDay++;
         });
       }

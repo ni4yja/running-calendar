@@ -22,7 +22,7 @@ export default {
 
 
 <style lang="scss">
-$text-blue: #302ea7;
+$text-blue: #343AA8;
 
   body {
     font-family: 'Lato', sans-serif;

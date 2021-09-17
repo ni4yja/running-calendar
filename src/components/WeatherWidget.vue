@@ -1,14 +1,16 @@
 <template>
   <div class="widget" v-if="weather.name">
-    <h2 class="date">{{ dateBuilder }}</h2>
-    <p class="location">{{ weather.name }}, {{ weather.sys.country }}</p>
+    <div class="weather-info">
+      <p class="date">{{ dateBuilder }}</p>
+      <p class="location">{{ weather.name }}, {{ weather.sys.country }}</p>
+    </div>
     <div class="weather-box">
       <i class="wi wi-day-sunny" v-if="getCurrent === weatherStatuses.Clear"></i>
       <i class="wi wi-cloudy" v-if="getCurrent === weatherStatuses.Clouds"></i>
       <i class="wi wi-rain"  v-if="getCurrent === weatherStatuses.Rain"></i>
       <i class="wi wi-snow"  v-if="getCurrent === weatherStatuses.Snow"></i>
-      <p class="temperature">{{ Math.round(weather.main.temp) }}°C</p>
-      <p class="details">{{ getCurrent }}</p>
+      <span class="details">{{ getCurrent }}</span>
+      <p class="temperature">{{ Math.round(weather.main.temp) }}°C</p>  
     </div>
   </div>
 </template>
@@ -58,28 +60,39 @@ export default {
 
 <style lang="scss">
 .widget {
-  background: #deebff;
-  color: darkslategray;
-  text-align: center;
-  padding: 1rem 3rem 2rem;
-  border-radius: 0 0 2rem 2rem;
-  width: fit-content;
-  margin: -3rem auto 0;
-
-  .date {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-  }
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-bottom: 27px;
 }
 
 .weather-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-right: 16px;
+  border-right: 1px solid #EBEFF2;
 
-  i, p {
-    padding: 0 .5rem;
+  i {
+    margin-right: 12px;
+  }
+
+  span {
+    font-size: 14px;
+  }
+
+  .temperature {
+    margin: 5px 0 0;
+    font-size: 28px;
+  }
+}
+
+.weather-info {
+  padding-left: 16px;
+
+  p {
     margin: 0;
+
+    &.date {
+      margin-bottom: 18px;
+    }
   }
 }
 </style>
