@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     weather: {},
     dateSelected: false,
+    tabSelected: '',
     program: {
       'Week 1': [
         {
@@ -88,6 +89,7 @@ export default new Vuex.Store({
     program: (state) => state.program,
     dateSelected: (state) => state.dateSelected,
     weather: (state) => state.weather,
+    tabSelected: (state) => state.tabSelected
   },
   mutations: {
     'SET_SELECTED_DATE': (state, flag) => {
@@ -112,6 +114,9 @@ export default new Vuex.Store({
     'SET_WEATHER': (state, weather) => {
       state.weather = weather
     },
+    'SET_SELECTED_TAB': (state, tab) => {
+      state.tabSelected = tab;
+    }
   },
   actions: {
     getWeather (state, position) {

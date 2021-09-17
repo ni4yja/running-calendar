@@ -13,7 +13,7 @@
     />
     <div v-if="dateSelected" class="results-tabs">
       <h2>Your training plan</h2>
-      <TabNav :tabs="weeks" :selected="selected" @selected="setSelected">
+      <TabNav :tabs="weeks" :selected="tabSelected" @selected="setSelected">
         <template v-for="(week, indexWeek) in weeks">
           <transition
             name="fade"
@@ -22,8 +22,8 @@
             :duration="500"
             :key="indexWeek"
           >
-            <Tab :isSelected="selected === week">
-              <p v-for="(day, index) in program[selected]" :key="index" @click="toggleComplete">
+            <Tab :isSelected="tabSelected === week">
+              <p v-for="(day, index) in program[tabSelected]" :key="index" @click="toggleComplete">
                 <span>{{ day.time }}</span>
                 <span>{{ day.distance }}</span>
                 <span class="mark"></span>
@@ -48,21 +48,16 @@ export default {
     TabNav,
     Tab,
   },
-  data() {
-    return {
-      selected: "",
-    };
-  },
   methods: {
     setSelected(tab) {
-      this.selected = tab;
+      this.$store.commit("SET_SELECTED_TAB", tab);
     },
     toggleComplete(event) {
       event.currentTarget.classList.toggle("completed");
     },
   },
   computed: {
-    ...mapGetters(["program", "dateSelected"]),
+    ...mapGetters(["program", "dateSelected", "tabSelected"]),
     weeks() {
       return Object.keys(this.program);
     },
@@ -71,7 +66,7 @@ export default {
     program: {
       deep: true,
       handler(newProgram, oldProgram) {
-        this.selected = this.weeks[0];
+        this.tabSelected = this.weeks[0];
       },
     },
   },
