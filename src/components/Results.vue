@@ -66,7 +66,7 @@ export default {
     program: {
       deep: true,
       handler(newProgram, oldProgram) {
-        this.tabSelected = this.weeks[0];
+        this.$store.commit("SET_SELECTED_TAB", this.weeks[0]);
       },
     },
   },
