@@ -174,6 +174,7 @@ $text-light: #888aad;
 
     .vdp-datepicker__calendar {
       margin: 3rem 0;
+      min-height: auto;
     }
   }
 }
