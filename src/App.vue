@@ -27,12 +27,13 @@ $text-blue: #343AA8;
   body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-  }
 
-  h1 {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    color: $text-blue;
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: $text-blue;
+    }
   }
 
   .header {

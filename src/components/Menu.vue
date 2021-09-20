@@ -96,7 +96,7 @@ export default {
     return {
       buttonType: "elastic",
       isActive: false,
-      size: "m",
+      size: "s",
       color: "#888AAD",
       activeColor: "#343AA8",
       showNav: window.innerWidth > 800,
@@ -160,7 +160,6 @@ export default {
 nav {
   a {
     display: block;
-    font-size: 1.2rem;
     text-decoration: none;
 
     &:hover {
@@ -225,8 +224,8 @@ nav {
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 0;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 
     &.github {
       background-image: url(../assets/github.svg);
@@ -240,6 +239,8 @@ nav {
 
 @media (min-width: 800px) {
   .menu-container {
+    padding: 13px 0;
+
     .burger-menu {
       display: none;
     }
@@ -260,6 +261,14 @@ nav {
 
     a {
       margin: 0 2rem 0 0;
+    }
+  }
+
+  .social {
+    &-item {
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

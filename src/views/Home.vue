@@ -27,10 +27,11 @@ $text-blue: #343AA8;
 $text-light: #EBEFF2;
 
 .home {
+  margin-top: 4rem;
+  
   .container {
     display: flex;
     flex-direction: column;
-    margin-top: 4rem;
     padding: 0 15px;
   }
 }

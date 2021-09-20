@@ -169,7 +169,6 @@ $text-light: #888aad;
 @media (min-width: 800px) {
   .schedule {
     h1 {
-      font-size: 24px;
       text-align: left;
     }
 
