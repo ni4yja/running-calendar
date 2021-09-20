@@ -27,10 +27,10 @@
         </nav>
         <ul class="social">
           <li class="social-item">
-            <a class="social-link github" href="#">GitHub</a>
+            <a class="social-link github" href="https://github.com/ni4yja/running-planner/blob/main/README.md" target="a_blank">GitHub</a>
           </li>
           <li class="social-item">
-            <a class="social-link medium" href="#">Medium</a>
+            <a class="social-link medium" href="https://ni4yja.medium.com/running-planner-vue-js-application-4784f0560ec4" target="a_blank">Medium</a>
           </li>
         </ul>
       </div>
