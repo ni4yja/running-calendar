@@ -25,7 +25,7 @@ export default new Vuex.Store({
           time: ""
         },
         {
-          distance: "25 minutes",
+          distance: "25-30 min",
           time: "",
         },
       ],
@@ -43,7 +43,7 @@ export default new Vuex.Store({
           time: ""
         },
         {
-          distance: "30 minutes",
+          distance: "25-30 min",
           time: "",
         },
       ],
@@ -61,7 +61,7 @@ export default new Vuex.Store({
           time: ""
         },
         {
-          distance: "30 minutes",
+          distance: "30-35 min",
           time: "",
         },
       ],
