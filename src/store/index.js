@@ -13,20 +13,28 @@ export default new Vuex.Store({
     program: {
       'Week 1': [
         {
+          id: 1,
           distance: "2 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
+          id: 2,
           distance: "2 km",
-          time: ""
+          time: "",
+          completed: true
         },
         {
+          id: 3,
           distance: "3 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
+          id: 4,
           distance: "25-30 min",
           time: "",
+          completed: false
         },
       ],
       'Week 2': [
@@ -89,7 +97,10 @@ export default new Vuex.Store({
     program: (state) => state.program,
     dateSelected: (state) => state.dateSelected,
     weather: (state) => state.weather,
-    tabSelected: (state) => state.tabSelected
+    tabSelected: (state) => state.tabSelected,
+    thisDay: (state, dayId) => {
+      return state.program['Week 1'].find(day => day.id === dayId);
+    }
   },
   mutations: {
     'SET_SELECTED_DATE': (state, flag) => {
@@ -116,6 +127,10 @@ export default new Vuex.Store({
     },
     'SET_SELECTED_TAB': (state, tab) => {
       state.tabSelected = tab;
+    },
+    'SET_COMPLETED': ({getters}, dayId) => {
+      let day = getters.thisDay(dayId);
+      day.completed = !day.completed;
     }
   },
   actions: {

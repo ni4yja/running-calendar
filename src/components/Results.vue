@@ -23,7 +23,11 @@
             :key="indexWeek"
           >
             <Tab :isSelected="tabSelected === week">
-              <p v-for="(day, index) in program[tabSelected]" :key="index" @click="toggleComplete">
+              <p v-for="(day, index) in program[tabSelected]"
+                :class="{completed: day.completed}" 
+                :key="index" 
+                @click="toggleCompleted(day)"
+              >
                 <span>{{ day.time }}</span>
                 <span>{{ day.distance }}</span>
                 <span class="mark"></span>
@@ -52,12 +56,13 @@ export default {
     setSelected(tab) {
       this.$store.commit("SET_SELECTED_TAB", tab);
     },
-    toggleComplete(event) {
-      event.currentTarget.classList.toggle("completed");
+    toggleCompleted(day) {
+      console.log(this.thisDay);
+      this.$store.commit("SET_COMPLETED", day.id);
     },
   },
   computed: {
-    ...mapGetters(["program", "dateSelected", "tabSelected"]),
+    ...mapGetters(["program", "dateSelected", "tabSelected", "thisDay"]),
     weeks() {
       return Object.keys(this.program);
     },
