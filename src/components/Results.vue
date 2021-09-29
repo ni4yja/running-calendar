@@ -57,12 +57,11 @@ export default {
       this.$store.commit("SET_SELECTED_TAB", tab);
     },
     toggleCompleted(day) {
-      console.log(this.thisDay);
-      this.$store.commit("SET_COMPLETED", day.id);
+      this.$store.commit("SET_COMPLETED", day);
     },
   },
   computed: {
-    ...mapGetters(["program", "dateSelected", "tabSelected", "thisDay"]),
+    ...mapGetters(["program", "dateSelected", "tabSelected"]),
     weeks() {
       return Object.keys(this.program);
     },

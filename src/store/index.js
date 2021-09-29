@@ -22,7 +22,7 @@ export default new Vuex.Store({
           id: 2,
           distance: "2 km",
           time: "",
-          completed: true
+          completed: false
         },
         {
           id: 3,
@@ -40,55 +40,67 @@ export default new Vuex.Store({
       'Week 2': [
         {
           distance: "2 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "3 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "3 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "25-30 min",
           time: "",
+          completed: false
         },
       ],
       'Week 3': [
         {
           distance: "3 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "4 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "4 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "30-35 min",
           time: "",
+          completed: false
         },
       ],
       'Week 4': [
         {
           distance: "3 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "4 km",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "have a rest",
-          time: ""
+          time: "",
+          completed: false
         },
         {
           distance: "5 km",
           time: "",
+          completed: false
         },
       ]
     }
@@ -97,10 +109,7 @@ export default new Vuex.Store({
     program: (state) => state.program,
     dateSelected: (state) => state.dateSelected,
     weather: (state) => state.weather,
-    tabSelected: (state) => state.tabSelected,
-    thisDay: (state, dayId) => {
-      return state.program['Week 1'].find(day => day.id === dayId);
-    }
+    tabSelected: (state) => state.tabSelected
   },
   mutations: {
     'SET_SELECTED_DATE': (state, flag) => {
@@ -128,8 +137,7 @@ export default new Vuex.Store({
     'SET_SELECTED_TAB': (state, tab) => {
       state.tabSelected = tab;
     },
-    'SET_COMPLETED': ({getters}, dayId) => {
-      let day = getters.thisDay(dayId);
+    'SET_COMPLETED': (state, day) => {
       day.completed = !day.completed;
     }
   },
