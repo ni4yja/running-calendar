@@ -16,6 +16,7 @@
 
 <script>
 import Datepicker from "vuejs-datepicker";
+import { mapActions } from 'vuex';
 
 export default {
   name: "Schedule",
@@ -37,7 +38,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['resetWeeks']),
     dateSelected(date) {
+      this.resetWeeks();
       this.$store.commit("SET_SELECTED_DATE", true);
       this.$store.commit("SET_PROGRAM_TIME", date);
     },

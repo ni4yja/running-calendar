@@ -10,6 +10,7 @@ export default new Vuex.Store({
     weather: {},
     dateSelected: false,
     tabSelected: '',
+    defaultWeek: 'Week 1',
     program: {
       'Week 1': [
         {
@@ -109,7 +110,8 @@ export default new Vuex.Store({
     program: (state) => state.program,
     dateSelected: (state) => state.dateSelected,
     weather: (state) => state.weather,
-    tabSelected: (state) => state.tabSelected
+    tabSelected: (state) => state.tabSelected,
+    defaultWeek: (state) => state.defaultWeek
   },
   mutations: {
     'SET_SELECTED_DATE': (state, flag) => {
@@ -153,6 +155,10 @@ export default new Vuex.Store({
           })
           .catch(err => reject(err));
       });
+    },
+    resetWeeks ({ commit, getters }) {
+      commit("SET_SELECTED_TAB", getters.defaultWeek);
+      // Then should reset 'completed' flag for each day
     }
   },
   modules: {

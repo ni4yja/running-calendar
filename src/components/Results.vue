@@ -66,14 +66,6 @@ export default {
       return Object.keys(this.program);
     },
   },
-  watch: {
-    program: {
-      deep: true,
-      handler(newProgram, oldProgram) {
-        this.$store.commit("SET_SELECTED_TAB", this.weeks[0]);
-      },
-    },
-  },
 };
 </script>
 
