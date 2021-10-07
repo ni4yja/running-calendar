@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import dayjs from 'dayjs';
 import { api_key, url_base } from '@/config';
+import createPersistedState from "vuex-persistedstate" 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     weather: {},
     dateSelected: false,
