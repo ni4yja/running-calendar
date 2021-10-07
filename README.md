@@ -4,6 +4,8 @@ A simple **Vue.js** application with a datepicker and tabs. A user can select a 
 
 Check out the [demo link](https://ni4yja.github.io/running-planner/) and read my [article on Medium](https://ni4yja.medium.com/running-planner-vue-js-application-4784f0560ec4) about the project.
 
+**Updated:** Now a user can toggle complete each day status and the data will be saved to the Local Storage.
+
 ## Project setup
 ```
 npm install
